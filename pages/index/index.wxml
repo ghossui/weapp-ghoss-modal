@@ -1,0 +1,3 @@
+<button class="btn" bindtap="onTapShowButton">弹出GhossModal组件</button>
+<!-- 嘤嘤嘤 -->
+<ghoss:modal data="{{ghossModal.showModal}}" bind:complete="onGhossModalEvent" />
