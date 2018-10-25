@@ -1,21 +1,26 @@
-<view class="modal-box {{thisClass}}" wx:if="{{hidden}}" catchtouchmove="noTouch">
-  <view class="modal-mask" data-mask="{{true}}" bindtap="bindCancel" />
-  <view class="modal-body" style="background: {{p.background}};">
+<view class="gmodal-box {{animationClass}} {{p.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
+  <!-- 遮罩层 -->
+  <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
+  <!-- 主体 -->
+  <view class="gmodal-body" style="background: {{p.background}};">
     <form bindsubmit="{{p.formId?'bindSubmit':''}}" report-submit="{{p.formId}}">
-      <view class="body-header" wx:if="{{p.showHeader}}">
+      <!-- 头部 -->
+      <view class="gmodal-body-header" wx:if="{{p.showHeader}}">
         <text>{{p.title}}</text>
       </view>
-      <view class="body-content">
+      <!-- 内容区 -->
+      <view class="gmodal-body-content">
         <scroll-view class="scroll" scroll-y="1">
-          <view wx:if="{{p.content}}" style="margin:20rpx 0;">{{p.content}}</view>
+          <!-- style="margin:20rpx 0;" -->
+          <view wx:if="{{p.content}}">{{p.content}}</view>
           <slot wx:else></slot>
         </scroll-view>
       </view>
-      <view class="body-btns" wx:if="{{p.showFooter}}">
+      <!-- 底部按钮 -->
+      <view class="gmodal-body-btns" wx:if="{{p.showFooter}}">
         <button class="btn btn-cancel" bindtap="bindCancel" wx:if="{{p.showCancel}}">
           {{p.cancelText}}
         </button>
-        <!-- form-type="{{p.formType}}" -->
         <button class="btn btn-confirm" bindtap="{{p.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{p.openType}}" app-parameter="{{p.appParameter}}" binderror="onErrorConfirmButton">
           {{p.confirmText}}
         </button>

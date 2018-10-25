@@ -1,0 +1,44 @@
+.wx-android-theme .gmodal-body-header {
+    border: none;
+    font-size: 36rpx;
+    padding: 40rpx 40rpx 10rpx;
+}
+
+.wx-android-theme .gmodal-body-content {
+    font-size: 30rpx;
+    padding: 20rpx 40rpx 10rpx;
+}
+
+/* 重写按钮样式 */
+
+.wx-android-theme .gmodal-body-btns {
+    justify-content: flex-end;
+    padding: 20rpx 40rpx 40rpx;
+    /* height: 100rpx; */
+}
+
+.wx-android-theme .gmodal-body-btns .btn {
+    flex: none;
+    margin: 0;
+    padding: 0;
+    width: 100rpx;
+    font-size: 28rpx;
+    line-height: 60rpx;
+}
+
+.wx-android-theme .gmodal-body-btns .btn:after {
+    border: none;
+}
+
+.wx-android-theme .gmodal-body-btns .btn:active {
+    background-color: #eaeaea;
+}
+
+.wx-android-theme .gmodal-body-btns .btn-confirm {
+    /* 非微信官方色 */
+    color: #43D925;
+}
+
+.wx-android-theme .gmodal-body-btns .btn-cancel {
+    margin-right: 10rpx;
+}

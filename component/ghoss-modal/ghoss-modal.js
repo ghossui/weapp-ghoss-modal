@@ -4,17 +4,21 @@ Component({
   properties: {
     data: {
       type: Object, observer(params, oldParams) {
-        // 获取配置
-        const config = getApp().ghossModal.config;
+        // 获取全局配置
+        const config = (getApp().ghossModal || {}).config || {};
+        // params.theme = config.theme || "normal"; // 配置皮肤名称
 
+        /* 应用全局配置或默认值 */
 
-        /* 默认值 */
+        if (!params.theme) params.theme = (config.theme || "normal");
+
         if (!params.uk) params.uk = "uk";// 标识 Uniquely key
+
         if (!params.title) params.title = "标题";
         if (!params.content) params.content = null; // 正文
         if (!params.openType) params.openType = null;// 确定按钮的openType
-        if (!params.confirmText) params.confirmText = config.confirmText || "确定";// 确定按钮的文本
-        if (!params.cancelText) params.cancelText = config.cancelText || "取消";// 取消按钮的文本
+        if (!params.confirmText) params.confirmText = "确定";// 确定按钮的文本
+        if (!params.cancelText) params.cancelText = "取消";// 取消按钮的文本
         if (!params.background) params.background = "#FFFFFF";// 背景颜色
         if (!params.appParameter) params.appParameter = ""; // 返回到app的参数，当openType为launchApp时才有效
         /* boolean 类型 */
@@ -37,25 +41,28 @@ Component({
         this.setData({ p: params });
         /* 控制显示或隐藏 */
         params.show === true ? this.show() : this.hide();
+        console.log(params)
       }
     }
   },
 
   /** 组件的初始数据 */
   data: {
-    showClass: "modal-show",
-    hideClass: "modal-hide",
-    thisClass: "modal-hide",
-    hidden: false,
+    showClass: "gmodal-show",
+    hideClass: "gmodal-hide",
+    /** 控制播放动画的class */
+    animationClass: "gmodal-hide",
+    /** 控制实际显示与隐藏 */
+    hidden: false
   },
 
   /** 组件的方法列表 */
   methods: {
     show() {
-      this.setData({ thisClass: this.data.showClass, hidden: true });
+      this.setData({ animationClass: this.data.showClass, hidden: true });
     },
     hide(success) {
-      this.setData({ thisClass: this.data.hideClass, "p.show": false });
+      this.setData({ animationClass: this.data.hideClass, "p.show": false });
       setTimeout(() => {
         this.setData({ hidden: false })
         if (typeof success == "function") success()

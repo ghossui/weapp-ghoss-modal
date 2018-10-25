@@ -1,37 +1,38 @@
-.modal-box, .modal-mask {
+@import "themes/wx-android.wxss";
+.gmodal-box {
+	position: fixed;
+	z-index: 99997;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gmodal-mask {
+	position: absolute;
+	z-index: 99998;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.gmodal-box, .gmodal-mask {
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 }
 
-.modal-box {
-	position: fixed;
-	z-index: 9999999;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.modal-mask {
-	position: absolute;
-	z-index: 999;
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-body {
+.gmodal-body {
 	position: relative;
-	z-index: 1000;
+	z-index: 99999;
 	width: 80%;
 	max-height: 80%;
 	transition: all 0.5s;
 }
 
-.modal-show .modal-body {
-	animation: modal-show 400ms;
+.gmodal-show .gmodal-body {
+	animation: animation-gmodal-show 400ms;
 }
 
-@keyframes modal-show {
+@keyframes animation-gmodal-show {
 	0% {
 		transform: scale(0.1, 0.1);
 	}
@@ -43,11 +44,11 @@
 	}
 }
 
-.modal-hide .modal-body {
-	animation: modal-hide 400ms;
+.gmodal-hide .gmodal-body {
+	animation: animation-gmodal-hide 400ms;
 }
 
-@keyframes modal-hide {
+@keyframes animation-gmodal-hide {
 	0% {
 		transform: scale(1, 1);
 	}
@@ -61,27 +62,32 @@
 
 /* header */
 
-.body-header {
+.gmodal-body-header {
+	font-size: 38rpx;
 	padding: 20rpx 20rpx;
 	border-bottom: 1px solid #f5f5f5;
+	/** 内容过多裁剪 */
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /* content */
 
-.body-content {
+.gmodal-body-content {
 	padding: 20rpx 20rpx;
+	font-size: 32rpx;
 }
 
-.body-content .scroll {
-	max-height: 70vh;
-	font-size: 32rpx;
+.gmodal-body-content .scroll {
 	color: #666;
+	max-height: 70vh;
 	position: relative;
 }
 
 /* buttons */
 
-.body-btns {
+.gmodal-body-btns {
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -89,22 +95,24 @@
 	justify-content: space-between;
 }
 
-.body-btns .btn {
+/* 自定义组件内不能使用标签选择器（例如：button） */
+
+.gmodal-body-btns .btn {
 	flex: 1;
 	color: #09f;
 	border-radius: 0;
 	background-color: white;
 }
 
-.body-btns .btn:active {
+.gmodal-body-btns .btn:active {
 	background-color: #ddd;
 }
 
-.body-btns .btn:after {
+.gmodal-body-btns .btn:after {
 	border: 1px solid #ccc;
 	border-radius: 0;
 }
 
-.btn-cancel {
-	color: black !important;
+.gmodal-body-btns .btn-cancel {
+	color: black;
 }
