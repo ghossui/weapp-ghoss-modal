@@ -1,7 +1,9 @@
-<ghoss:modal data="{{ghossModal.showModal}}" bind:complete="onGhossModalEvent" />
-<!-- 使用默认主题 -->
+<ghoss:modal data="{{gmodal.showModal}}" bind:complete="onGhossModalEvent" />
+<!-- 使用默认样式 -->
 <button class="btn" bindtap="onTapShowNormal">使用GhossModal默认样式</button>
-<!-- 使用微信安卓主题 -->
+<!-- 使用微信安卓样式 -->
 <button class="btn" bindtap="onTapShowAndroidTheme">使用微信安卓样式</button>
-<!-- 使用微信IOS主题 -->
-<button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS主题</button>
+<!-- 使用微信IOS样式 -->
+<button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS样式</button>
+<!-- 封装了的alert -->
+<button class="btn" bindtap="onTapShowAlert">封装了的alert</button>

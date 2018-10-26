@@ -9,6 +9,7 @@ App({
       // confirmText: "red",
       //  cancelText: "yellow",
       // theme: "wx-android",
+      alertTheme: "wx-ios",
     },
   },
 

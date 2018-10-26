@@ -19,8 +19,13 @@ module.exports = class GhossModal {
         }
     }
 
+    alert(title, content, success) {
+        showModal(this, title, content, success, false);
+    }
+
     show(name, params) { this.toggle(name, params, true) }
     hide(name) { this.toggle(name, null, false) }
+
     /**
      * 切换显示GhossModal
      * @param {*} name GhossModal的名称
@@ -49,6 +54,26 @@ module.exports = class GhossModal {
     }
 
 }
+
+/** 封装showModal */
+function showModal(gmodal, title, content, success, showCancel) {
+    let params = {};
+    if (typeof content != 'undefined') {
+        if (typeof content == 'function') {
+            params = { content: title, showCancel, confirm: content, showHeader: false };
+        } else {
+            params = { title, content, showCancel, confirm: success };
+        }
+    } else {
+        params = { content: title, showCancel, showHeader: false };
+    }
+    const config = (getApp().ghossModal || {}).config || {};
+    params.autoClose = true;
+    params.maskClose = false;
+    params.theme = config.alertTheme;
+    gmodal.show("gmodal.showModal", params);
+}
+
 
 /** 抛出构建错误 */
 function throwInstantiatingError(msg) {

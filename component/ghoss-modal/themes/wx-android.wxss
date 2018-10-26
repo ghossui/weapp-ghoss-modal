@@ -12,6 +12,13 @@
     padding: 20rpx 40rpx 10rpx;
 }
 
+.wx-android-theme .gmodal-body-content.hide-header {
+    padding: 40rpx;
+    padding-bottom: 10rpx;
+    text-align: left;
+}
+
+
 /* 按钮父级view样式 */
 .wx-android-theme .gmodal-body-btns {
     justify-content: flex-end;

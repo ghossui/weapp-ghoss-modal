@@ -9,7 +9,7 @@
         <text>{{p.title}}</text>
       </view>
       <!-- 内容区 -->
-      <view class="gmodal-body-content">
+      <view class="gmodal-body-content {{p.showHeader?'':'hide-header'}}">
         <scroll-view class="scroll" scroll-y="1">
           <!-- style="margin:20rpx 0;" -->
           <view wx:if="{{p.content}}">{{p.content}}</view>

@@ -80,6 +80,15 @@
 	font-size: 32rpx;
 }
 
+.gmodal-body-content.hide-header {
+	padding: 50rpx 30rpx;
+	text-align: center;
+}
+
+.gmodal-body-content.hide-header .scroll {
+	color: black;
+}
+
 .gmodal-body-content .scroll {
 	color: #666;
 	max-height: 70vh;

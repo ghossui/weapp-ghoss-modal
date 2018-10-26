@@ -17,12 +17,12 @@ Page({
     _this.gmodal = new GhossModal(this);
 
 
-    _this.onTapShowIOSTheme();
+    _this.onTapShowAlert();
 
   },
 
   onTapShowNormal() {
-    _this.gmodal.show("ghossModal.showModal", {
+    _this.gmodal.show("gmodal.showModal", {
       title, content,
       confirm(res) { },
     });
@@ -30,7 +30,7 @@ Page({
   },
 
   onTapShowAndroidTheme() {
-    _this.gmodal.show("ghossModal.showModal", {
+    _this.gmodal.show("gmodal.showModal", {
       title, content,
       theme: "wx-android",
       confirm(res) { },
@@ -38,10 +38,18 @@ Page({
   },
 
   onTapShowIOSTheme() {
-    _this.gmodal.show("ghossModal.showModal", {
+    _this.gmodal.show("gmodal.showModal", {
       title, content,
       theme: "wx-ios",
       confirm(res) { },
+    });
+  },
+
+  onTapShowAlert() {
+    _this.gmodal.alert(title, content, () => {
+      setTimeout(() => {
+        _this.gmodal.alert(`这里是无标题的alert！`);
+      }, 500)
     });
   },
 
