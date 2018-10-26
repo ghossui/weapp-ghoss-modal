@@ -3,7 +3,7 @@
   <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
   <!-- 主体 -->
   <view class="gmodal-body" style="background: {{p.background}};">
-    <form bindsubmit="{{p.formId?'bindSubmit':''}}" report-submit="{{p.formId}}">
+    <form bindsubmit="{{p.formId?'bindConfirm':''}}" report-submit="{{p.formId}}">
       <!-- 头部 -->
       <view class="gmodal-body-header" wx:if="{{p.showHeader}}">
         <text>{{p.title}}</text>

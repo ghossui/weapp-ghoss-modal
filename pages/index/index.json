@@ -1,5 +1,5 @@
 {
     "usingComponents": {
-        "ghoss:modal": "/component/ghoss-modal/ghoss-modal"
+        "ghoss:modal": "/lib/ghoss-modal/ghoss-modal"
     }
 }
