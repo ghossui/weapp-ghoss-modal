@@ -1,22 +1,25 @@
+
+/* 弹窗标题的样式 */
 .wx-android-theme .gmodal-body-header {
     border: none;
     font-size: 36rpx;
     padding: 40rpx 40rpx 10rpx;
 }
 
+/* 弹窗内容的样式 */
 .wx-android-theme .gmodal-body-content {
     font-size: 30rpx;
     padding: 20rpx 40rpx 10rpx;
 }
 
-/* 重写按钮样式 */
-
+/* 按钮父级view样式 */
 .wx-android-theme .gmodal-body-btns {
     justify-content: flex-end;
     padding: 20rpx 40rpx 40rpx;
     /* height: 100rpx; */
 }
 
+/* 按钮的样式 */
 .wx-android-theme .gmodal-body-btns .btn {
     flex: none;
     margin: 0;
@@ -26,19 +29,23 @@
     line-height: 60rpx;
 }
 
+/* 按钮after，边框样式 */
 .wx-android-theme .gmodal-body-btns .btn:after {
     border: none;
 }
 
+/* 按钮点击态的样式 */
 .wx-android-theme .gmodal-body-btns .btn:active {
     background-color: #eaeaea;
 }
 
+/* 确认按钮的样式 */
 .wx-android-theme .gmodal-body-btns .btn-confirm {
     /* 非微信官方色 */
     color: #43D925;
 }
 
+/* 取消按钮的样式 */
 .wx-android-theme .gmodal-body-btns .btn-cancel {
     margin-right: 10rpx;
 }

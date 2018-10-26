@@ -1,6 +1,8 @@
 const app = getApp();
-const GhossModal = require("../../utils/fun.js");
+const GhossModal = require("../../utils/ghoss-modal-util.js");
 var _this;
+var title = "弹窗标题";
+var content = "弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内。";
 Page({
   data: {
     button: {
@@ -15,50 +17,30 @@ Page({
     _this.gmodal = new GhossModal(this);
 
 
-    // _this.onTapShowButton();
-
-    _this.gmodal.show("ghossModal.showModal", null, {
-      title: "弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题",
-      content: "弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内。",
-      autoClose: true,
-      confirm(res) {
-        console.log("res:", res)
-
-        // wx.showModal({
-        //   content: "触发事件",
-        //   showCancel: false,
-        //   complete() {
-        //     wx.showToast({
-        //       icon: "none",
-        //       title: "触发了事件！"
-        //     })
-        //   }
-        // })
-      },
-    });
+    _this.onTapShowIOSTheme();
 
   },
 
-
-
-  onTapShowButton() {
-    // 显示
-    _this.gmodal.show("ghossModal.showModal", null, {
-      title: "弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题",
-      content: "弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内。",
-      autoClose: true,
+  onTapShowNormal() {
+    _this.gmodal.show("ghossModal.showModal", {
+      title, content,
       confirm(res) { },
     });
 
   },
 
-  onTapShowButton1() {
-    // 显示
-    _this.gmodal.show("ghossModal.showModal", null, {
-      title: "弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题弹窗标题",
-      content: "弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内。",
-      autoClose: true,
+  onTapShowAndroidTheme() {
+    _this.gmodal.show("ghossModal.showModal", {
+      title, content,
       theme: "wx-android",
+      confirm(res) { },
+    });
+  },
+
+  onTapShowIOSTheme() {
+    _this.gmodal.show("ghossModal.showModal", {
+      title, content,
+      theme: "wx-ios",
       confirm(res) { },
     });
   },

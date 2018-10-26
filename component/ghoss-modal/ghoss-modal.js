@@ -22,9 +22,9 @@ Component({
         if (!params.background) params.background = "#FFFFFF";// 背景颜色
         if (!params.appParameter) params.appParameter = ""; // 返回到app的参数，当openType为launchApp时才有效
         /* boolean 类型 */
-        if (typeof params.autoClose !== "boolean") params.autoClose = false;// 是否自动关闭
+        if (typeof params.autoClose !== "boolean") params.autoClose = (config.autoClose || true);// 是否自动关闭
         if (typeof params.formId !== "boolean") params.formId = false;// 点击确定是否返回formIdable
-        if (typeof params.maskClose !== "boolean") params.maskClose = true;// 允许点击蒙版关闭
+        if (typeof params.maskClose !== "boolean") params.maskClose = (config.autoClose || false);// 允许点击蒙版关闭
         if (typeof params.showHeader !== "boolean") params.showHeader = true;// 是否显示顶部
         if (typeof params.showFooter !== "boolean") params.showFooter = true;// 是否显示底部
         if (typeof params.showCancel !== "boolean") params.showCancel = true;// 是否显示取消按钮
