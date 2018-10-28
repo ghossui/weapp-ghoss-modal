@@ -4,7 +4,7 @@
 
 这是一个功能强大且体积小巧的微信小程序模态弹窗组件，它能实现你的程序中绝大多数的弹窗需求！不仅功能强大，使用起来也极其简单，你只需要`new`一个`GhossModal`对象，即可使用全部功能！赶快看看下面详细介绍的它强大的特性吧！ :laughing: :laughing: :laughing:
 
-想要了解更多？点击这里[快速开始](quickstart)！
+想要了解更多？点击这里[快速开始](https://sjlei.github.io/weapp-ghoss-modal/#/quickstart)！
 
 
 ## 特性
