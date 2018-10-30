@@ -7,3 +7,5 @@
 <button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS样式</button>
 <!-- 封装了的alert -->
 <button class="btn" bindtap="onTapShowAlert">封装了的alert</button>
+<!-- 按钮颜色 -->
+<button class="btn" bindtap="onTapButtonColor">更改按钮颜色</button>

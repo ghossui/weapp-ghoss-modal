@@ -18,10 +18,10 @@
       </view>
       <!-- 底部按钮 -->
       <view class="gmodal-body-btns" wx:if="{{p.showFooter}}">
-        <button class="btn btn-cancel" bindtap="bindCancel" wx:if="{{p.showCancel}}">
+        <button class="btn btn-cancel" style="{{p.cancelStyle}}" bindtap="bindCancel" wx:if="{{p.showCancel}}">
           {{p.cancelText}}
         </button>
-        <button class="btn btn-confirm" bindtap="{{p.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{p.openType}}" app-parameter="{{p.appParameter}}" binderror="onErrorConfirmButton">
+        <button class="btn btn-confirm" style="{{p.confirmStyle}}" bindtap="{{p.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{p.openType}}" app-parameter="{{p.appParameter}}" binderror="onErrorConfirmButton">
           {{p.confirmText}}
         </button>
       </view>

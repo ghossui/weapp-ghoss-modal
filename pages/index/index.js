@@ -57,4 +57,14 @@ Page({
     });
   },
 
+  onTapButtonColor() {
+    _this.gmodal.show("gmodal.showModal", {
+      title, content,
+      theme: "wx-ios",
+      confirmColor: "blue",
+      cancelColor: "#ff0000",
+      confirm(res) { },
+    });
+  },
+
 })
