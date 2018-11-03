@@ -1,3 +1,87 @@
-button {
+/* button {
     margin-top: 20rpx;
+} */
+
+.title {
+    margin: 100rpx auto 100rpx;
+    padding-bottom: 20rpx;
+    width: 340rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #333333;
+    border-bottom: 1px solid #aaaaaa;
+}
+
+.input-item {
+    margin: 30rpx 0;
+    box-sizing: border-box;
+}
+
+.input-tip, .input-tip-tidy {
+    font-size: 32rpx;
+    padding: 0 20rpx;
+    color: #666;
+}
+
+.input-tip:after {
+    content: '：';
+}
+
+.input-tip-tidy:after {
+    content: '';
+}
+
+.input-placeholder, .input-item input {
+    font-size: 36rpx;
+}
+
+.input-item input, .input-item .input-view {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    /* height: 60rpx; */
+    padding: 15rpx 20rpx;
+    background-color: white;
+}
+
+.input-item .input-view {
+    overflow: hidden;
+    line-height: 50rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.input-item .input-view.placeholder {
+    color: #888;
+    font-size: 28rpx;
+}
+
+.input-item-double {
+    display: flex;
+    margin-top: 0;
+}
+
+.input-item-double .input-item-double-middle {
+    height: 100%;
+    line-height: 100rpx;
+    width: 150rpx;
+    text-align: center;
+}
+
+.input-item-double input:first-child {
+    border-right: 1px solid #ddd;
+    text-align: right;
+}
+
+.input-item-double input:last-child {
+    border-left: 1px solid #ddd;
+}
+
+.btn {
+    color: white;
+    background-color: #1e90ff;
+}
+
+.btn:active {
+    opacity: 0.6;
 }

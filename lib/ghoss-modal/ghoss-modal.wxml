@@ -1,4 +1,4 @@
-<view class="gmodal-box {{animationClass}} {{p.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
+<view class="gmodal-box {{toggleClass}} {{animationClass}} {{p.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
   <!-- 遮罩层 -->
   <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
   <!-- 主体 -->

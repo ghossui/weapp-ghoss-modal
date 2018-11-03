@@ -1,5 +1,9 @@
 @import "themes/wx-android.wxss";
 @import "themes/wx-ios.wxss";
+@import "animation/mask-normal.wxss";
+@import "animation/zoom-in-out.wxss";
+@import "animation/fading-in-out.wxss";
+@import "animation/fading-zoom-in-out.wxss";
 .gmodal-box {
 	position: fixed;
 	z-index: 99997;
@@ -11,7 +15,7 @@
 .gmodal-mask {
 	position: absolute;
 	z-index: 99998;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0);
 }
 
 .gmodal-box, .gmodal-mask {
@@ -29,6 +33,7 @@
 	transition: all 0.5s;
 }
 
+/* 
 .gmodal-show .gmodal-body {
 	animation: animation-gmodal-show 400ms;
 }
@@ -59,7 +64,7 @@
 	100% {
 		transform: scale(0.1, 0.1);
 	}
-}
+} */
 
 /* header */
 

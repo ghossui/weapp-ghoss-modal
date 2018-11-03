@@ -1,11 +1,48 @@
 <ghoss:modal data="{{gmodal.showModal}}" bind:complete="onGhossModalEvent" />
 <!-- 使用默认样式 -->
-<button class="btn" bindtap="onTapShowNormal">使用GhossModal默认样式</button>
 <!-- 使用微信安卓样式 -->
-<button class="btn" bindtap="onTapShowAndroidTheme">使用微信安卓样式</button>
 <!-- 使用微信IOS样式 -->
-<button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS样式</button>
 <!-- 封装了的alert -->
-<button class="btn" bindtap="onTapShowAlert">封装了的alert</button>
 <!-- 按钮颜色 -->
-<button class="btn" bindtap="onTapButtonColor">更改按钮颜色</button>
+<!-- <button class="btn" bindtap="onTapShowNormal">使用GhossModal默认样式</button>
+<button class="btn" bindtap="onTapShowAndroidTheme">使用微信安卓样式</button>
+<button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS样式</button>
+<button class="btn" bindtap="onTapShowAlert">封装了的alert</button>
+<button class="btn" bindtap="onTapButtonColor">更改按钮颜色</button> -->
+<view class="title">GhossModal 演示</view>
+<form bind:submit="onSubmitShowModal">
+    <!-- title -->
+    <view class="input-item">
+        <text class="input-tip">标题</text>
+        <input name="title" placeholder="title" value="这里是标题" />
+    </view>
+    <!-- content -->
+    <view class="input-item">
+        <text class="input-tip">内容</text>
+        <input name="content" placeholder="content" value="这里是提示内容" />
+    </view>
+    <!-- button text -->
+    <view class="input-tip">按钮文本</view>
+    <view class="input-item input-item-double">
+        <!-- cancelText -->
+        <input name="cancelText" placeholder="cancelText" value="取消" />
+        <text class="input-item-double-middle"></text>
+        <!-- confirmText -->
+        <input name="confirmText" placeholder="confirmText" value="确定" />
+    </view>
+    <!-- theme -->
+    <view class="input-item">
+        <text class="input-tip">样式</text>
+        <picker mode="selector" range="{{theme.range}}" value="{{theme.index}}" bindchange="onChangeTheme">
+            <input name="theme" placeholder="theme" value="{{theme.value}}" disabled="{{true}}" />
+        </picker>
+    </view>
+    <!-- animation -->
+    <view class="input-item">
+        <text class="input-tip">动画</text>
+        <picker mode="selector" range="{{animation.range}}" value="{{animation.index}}" bindchange="onChangeAnimation">
+            <input name="animation" placeholder="animation" value="{{animation.value}}" disabled="{{true}}" />
+        </picker>
+    </view>
+    <button class="btn" form-type="submit">立即弹出看下效果</button>
+</form>
