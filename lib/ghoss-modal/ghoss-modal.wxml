@@ -1,28 +1,28 @@
-<view class="gmodal-box {{toggleClass}} {{animationClass}} {{p.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
+<view class="gmodal-box {{toggleClass}} {{animationClass}} {{o.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
   <!-- 遮罩层 -->
   <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
   <!-- 主体 -->
-  <view class="gmodal-body" style="background: {{p.background}};">
-    <form bindsubmit="{{p.formId?'bindConfirm':''}}" report-submit="{{p.formId}}">
+  <view class="gmodal-body" style="background: {{o.background}};">
+    <form bindsubmit="{{o.formId?'bindConfirm':''}}" report-submit="{{o.formId}}">
       <!-- 头部 -->
-      <view class="gmodal-body-header" wx:if="{{p.showHeader}}">
-        <text>{{p.title}}</text>
+      <view class="gmodal-body-header" wx:if="{{o.showHeader}}">
+        <text>{{o.title}}</text>
       </view>
       <!-- 内容区 -->
-      <view class="gmodal-body-content {{p.showHeader?'':'hide-header'}}">
+      <view class="gmodal-body-content {{o.showHeader?'':'hide-header'}}">
         <scroll-view class="scroll" scroll-y="1">
           <!-- style="margin:20rpx 0;" -->
-          <view wx:if="{{p.content}}">{{p.content}}</view>
+          <view wx:if="{{o.content}}">{{o.content}}</view>
           <slot wx:else></slot>
         </scroll-view>
       </view>
       <!-- 底部按钮 -->
-      <view class="gmodal-body-btns" wx:if="{{p.showFooter}}">
-        <button class="btn btn-cancel" style="{{p.cancelStyle}}" bindtap="bindCancel" wx:if="{{p.showCancel}}">
-          {{p.cancelText}}
+      <view class="gmodal-body-btns" wx:if="{{o.showFooter}}">
+        <button class="btn btn-cancel" style="{{o.cancelStyle}}" bindtap="bindCancel" wx:if="{{o.showCancel}}">
+          {{o.cancelText}}
         </button>
-        <button class="btn btn-confirm" style="{{p.confirmStyle}}" bindtap="{{p.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{p.openType}}" app-parameter="{{p.appParameter}}" binderror="onErrorConfirmButton">
-          {{p.confirmText}}
+        <button class="btn btn-confirm" style="{{o.confirmStyle}}" bindtap="{{o.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{o.openType}}" app-parameter="{{o.appParameter}}" binderror="onErrorConfirmButton">
+          {{o.confirmText}}
         </button>
       </view>
     </form>

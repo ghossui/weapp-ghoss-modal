@@ -1,14 +1,5 @@
+<ghoss:modal data="{{gmodal.showExample}}" bind:complete="onGhossModalEvent" />
 <ghoss:modal data="{{gmodal.showModal}}" bind:complete="onGhossModalEvent" />
-<!-- 使用默认样式 -->
-<!-- 使用微信安卓样式 -->
-<!-- 使用微信IOS样式 -->
-<!-- 封装了的alert -->
-<!-- 按钮颜色 -->
-<!-- <button class="btn" bindtap="onTapShowNormal">使用GhossModal默认样式</button>
-<button class="btn" bindtap="onTapShowAndroidTheme">使用微信安卓样式</button>
-<button class="btn" bindtap="onTapShowIOSTheme">使用微信IOS样式</button>
-<button class="btn" bindtap="onTapShowAlert">封装了的alert</button>
-<button class="btn" bindtap="onTapButtonColor">更改按钮颜色</button> -->
 <view class="title">GhossModal 演示</view>
 <form bind:submit="onSubmitShowModal">
     <!-- title -->
@@ -43,6 +34,36 @@
         <picker mode="selector" range="{{animation.range}}" value="{{animation.index}}" bindchange="onChangeAnimation">
             <input name="animation" placeholder="animation" value="{{animation.value}}" disabled="{{true}}" />
         </picker>
+    </view>
+    <!-- showHeader -->
+    <view class="input-item input-switch">
+        <view>显示头部</view>
+        <switch name="showHeader" checked="{{true}}" color="#1e90ff" />
+    </view>
+    <!-- showFooter -->
+    <view class="input-item input-switch">
+        <view>显示底部</view>
+        <switch name="showFooter" checked="{{true}}" color="#1e90ff" />
+    </view>
+    <!-- showCancel -->
+    <view class="input-item input-switch">
+        <view>显示取消按钮</view>
+        <switch name="showCancel" checked="{{true}}" color="#1e90ff" />
+    </view>
+    <!-- autoClose -->
+    <view class="input-item input-switch">
+        <view>点击确定按钮关闭弹窗</view>
+        <switch name="autoClose" checked="{{true}}" color="#1e90ff" />
+    </view>
+    <!-- maskClose -->
+    <view class="input-item input-switch">
+        <view>点击遮罩层关闭弹窗</view>
+        <switch name="maskClose" checked="{{false}}" color="#1e90ff" />
+    </view>
+    <!-- formId -->
+    <view class="input-item input-switch">
+        <view>点击确定按钮获取formId</view>
+        <switch name="formId" checked="{{false}}" color="#1e90ff" />
     </view>
     <button class="btn" form-type="submit">立即弹出看下效果</button>
 </form>

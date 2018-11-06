@@ -9,6 +9,7 @@ App({
       //  cancelText: "yellow",
       // theme: "wx-android",
       alertTheme: "wx-ios",
+      alertAnimation: "fading-zoom-in-out",
     },
   }
 })

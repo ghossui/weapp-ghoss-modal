@@ -77,6 +77,15 @@
     border-left: 1px solid #ddd;
 }
 
+.input-switch {
+    padding: 15rpx 20rpx;
+    display: flex;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .btn {
     color: white;
     background-color: #1e90ff;
