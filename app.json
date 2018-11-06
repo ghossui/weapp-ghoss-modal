@@ -1,11 +1,33 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/about/about",
+    "pages/opentype/opentype"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#1e90ba",
     "navigationBarTitleText": "GhossModal弹窗组件演示",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "position": "top",
+    "color": "#ccc",
+    "selectedColor": "white",
+    "backgroundColor": "#1e90ba",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "动态演示"
+      },
+      {
+        "pagePath": "pages/opentype/opentype",
+        "text": "open-type"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于"
+      }
+    ]
   }
 }

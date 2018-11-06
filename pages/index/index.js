@@ -35,8 +35,8 @@ Page({
       content: value.content,
       cancelText: value.cancelText,
       confirmText: value.confirmText,
-      // confirmColor: "blue",
-      // cancelColor: "#ff0000",
+      confirmColor: value.confirmColor,
+      cancelColor: value.cancelColor,
       theme: value.theme,
       animation: value.animation,
       showHeader: value.showHeader,
@@ -47,13 +47,16 @@ Page({
       formId: value.formId,
       /** 确定按钮回调 */
       confirm(res) {
-        wx.showToast({ title: "confirm", icon: "none" });
+        wx.showToast({
+          title: "confirm",
+          icon: "none"
+        });
         if (res.autoClose === false) {
           wx.showModal({
             content: "检测到你关闭了'点击确定按钮关闭弹窗'选项，现在可以手动关闭，点击确定关闭",
             success(res) {
               if (res.confirm)
-                _this.gmodal.hide("gmodal.showExample");// 手动关闭
+                _this.gmodal.hide("gmodal.showExample"); // 手动关闭
             }
           })
         }
@@ -64,7 +67,10 @@ Page({
       },
       /** 取消按钮回调 */
       cancel(res) {
-        wx.showToast({ title: "cancel", icon: "none" })
+        wx.showToast({
+          title: "cancel",
+          icon: "none"
+        })
       },
       /** 完成事件回调，无论点击了确定还是取消都会触发 */
       complete(res) {

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "动态演示",
+  "navigationBarTitleText": "open-type属性演示",
   "usingComponents": {
     "ghoss:modal": "/lib/ghoss-modal/ghoss-modal"
   }

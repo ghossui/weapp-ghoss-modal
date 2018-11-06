@@ -30,3 +30,18 @@
 # 待完成
 
 - [ ] 可弹出input输入框
+- [ ] button属性支持
+    - [ ] 支持`open-type="getUserInfo"`获取用户信息，基础库版本1.3.0
+    - [ ] 支持`bindgetuserinfo`回调
+    - [ ] 支持`lang`属性
+    - [ ] 支持`open-type="getPhoneNumber"`获取手机号码，基础库版本1.2.0
+    - [ ] 支持`bindgetphonenumber`回调
+    - [ ] 支持`open-type="launchApp"`打开app，基础库版本1.9.5
+    - [ ] 支持`app-parameter`属性
+    - [ ] 支持`open-type="openSetting"`，打开设置，基础库版本2.0.7，采用兼容写法
+    - [ ] 支持`bindopensetting`回调
+    - [ ] 支持`open-type="contact"`，打开设置，基础库版本1.1.0，仅支持打开客服会话
+    - [ ] 支持`bindcontact`回调
+    - [ ] 支持`open-type="share"`，打开设置，基础库版本1.2.0
+    - [ ] 支持`open-type="feedback"`，打开设置，基础库版本2.1.0
+    - [ ] 支持`loading`属性

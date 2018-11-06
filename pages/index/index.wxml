@@ -1,69 +1,78 @@
 <ghoss:modal data="{{gmodal.showExample}}" bind:complete="onGhossModalEvent" />
 <ghoss:modal data="{{gmodal.showModal}}" bind:complete="onGhossModalEvent" />
-<view class="title">GhossModal 演示</view>
+<view class="title">GhossModal 动态演示</view>
 <form bind:submit="onSubmitShowModal">
-    <!-- title -->
-    <view class="input-item">
-        <text class="input-tip">标题</text>
-        <input name="title" placeholder="title" value="这里是标题" />
-    </view>
-    <!-- content -->
-    <view class="input-item">
-        <text class="input-tip">内容</text>
-        <input name="content" placeholder="content" value="这里是提示内容" />
-    </view>
-    <!-- button text -->
-    <view class="input-tip">按钮文本</view>
-    <view class="input-item input-item-double">
-        <!-- cancelText -->
-        <input name="cancelText" placeholder="cancelText" value="取消" />
-        <text class="input-item-double-middle"></text>
-        <!-- confirmText -->
-        <input name="confirmText" placeholder="confirmText" value="确定" />
-    </view>
-    <!-- theme -->
-    <view class="input-item">
-        <text class="input-tip">样式</text>
-        <picker mode="selector" range="{{theme.range}}" value="{{theme.index}}" bindchange="onChangeTheme">
-            <input name="theme" placeholder="theme" value="{{theme.value}}" disabled="{{true}}" />
-        </picker>
-    </view>
-    <!-- animation -->
-    <view class="input-item">
-        <text class="input-tip">动画</text>
-        <picker mode="selector" range="{{animation.range}}" value="{{animation.index}}" bindchange="onChangeAnimation">
-            <input name="animation" placeholder="animation" value="{{animation.value}}" disabled="{{true}}" />
-        </picker>
-    </view>
-    <!-- showHeader -->
-    <view class="input-item input-switch">
-        <view>显示头部</view>
-        <switch name="showHeader" checked="{{true}}" color="#1e90ff" />
-    </view>
-    <!-- showFooter -->
-    <view class="input-item input-switch">
-        <view>显示底部</view>
-        <switch name="showFooter" checked="{{true}}" color="#1e90ff" />
-    </view>
-    <!-- showCancel -->
-    <view class="input-item input-switch">
-        <view>显示取消按钮</view>
-        <switch name="showCancel" checked="{{true}}" color="#1e90ff" />
-    </view>
-    <!-- autoClose -->
-    <view class="input-item input-switch">
-        <view>点击确定按钮关闭弹窗</view>
-        <switch name="autoClose" checked="{{true}}" color="#1e90ff" />
-    </view>
-    <!-- maskClose -->
-    <view class="input-item input-switch">
-        <view>点击遮罩层关闭弹窗</view>
-        <switch name="maskClose" checked="{{false}}" color="#1e90ff" />
-    </view>
-    <!-- formId -->
-    <view class="input-item input-switch">
-        <view>点击确定按钮获取formId</view>
-        <switch name="formId" checked="{{false}}" color="#1e90ff" />
-    </view>
-    <button class="btn" form-type="submit">立即弹出看下效果</button>
+  <!-- title -->
+  <view class="input-item">
+    <text class="input-tip">标题</text>
+    <input name="title" placeholder="title" value="这里是标题" />
+  </view>
+  <!-- content -->
+  <view class="input-item">
+    <text class="input-tip">内容</text>
+    <input name="content" placeholder="content" value="这里是提示内容" />
+  </view>
+  <!-- button text -->
+  <view class="input-tip">按钮文本</view>
+  <view class="input-item input-item-double">
+    <!-- cancelText -->
+    <input name="cancelText" placeholder="cancelText" value="取消" />
+    <text class="input-item-double-middle"></text>
+    <!-- confirmText -->
+    <input name="confirmText" placeholder="confirmText" value="确定" />
+  </view>
+  <!-- button color -->
+  <view class="input-tip">按钮颜色</view>
+  <view class="input-item input-item-double">
+    <!-- cancelText -->
+    <input name="cancelColor" placeholder="cancelColor" value="black" />
+    <text class="input-item-double-middle"></text>
+    <!-- confirmText -->
+    <input name="confirmColor" placeholder="confirmColor" value="#1e90ba" />
+  </view>
+  <!-- theme -->
+  <view class="input-item">
+    <text class="input-tip">样式</text>
+    <picker mode="selector" range="{{theme.range}}" value="{{theme.index}}" bindchange="onChangeTheme">
+      <input name="theme" placeholder="theme" value="{{theme.value}}" disabled="{{true}}" />
+    </picker>
+  </view>
+  <!-- animation -->
+  <view class="input-item">
+    <text class="input-tip">动画</text>
+    <picker mode="selector" range="{{animation.range}}" value="{{animation.index}}" bindchange="onChangeAnimation">
+      <input name="animation" placeholder="animation" value="{{animation.value}}" disabled="{{true}}" />
+    </picker>
+  </view>
+  <!-- showHeader -->
+  <view class="input-item input-switch">
+    <view>显示头部</view>
+    <switch name="showHeader" checked="{{true}}" color="#1e90ba" />
+  </view>
+  <!-- showFooter -->
+  <view class="input-item input-switch">
+    <view>显示底部</view>
+    <switch name="showFooter" checked="{{true}}" color="#1e90ba" />
+  </view>
+  <!-- showCancel -->
+  <view class="input-item input-switch">
+    <view>显示取消按钮</view>
+    <switch name="showCancel" checked="{{true}}" color="#1e90ba" />
+  </view>
+  <!-- autoClose -->
+  <view class="input-item input-switch">
+    <view>点击确定按钮关闭弹窗</view>
+    <switch name="autoClose" checked="{{true}}" color="#1e90ba" />
+  </view>
+  <!-- maskClose -->
+  <view class="input-item input-switch">
+    <view>点击遮罩层关闭弹窗</view>
+    <switch name="maskClose" checked="{{false}}" color="#1e90ba" />
+  </view>
+  <!-- formId -->
+  <view class="input-item input-switch">
+    <view>点击确定按钮获取formId</view>
+    <switch name="formId" checked="{{false}}" color="#1e90ba" />
+  </view>
+  <button class="btn btn-submit" form-type="submit">立即弹出看下效果</button>
 </form>
