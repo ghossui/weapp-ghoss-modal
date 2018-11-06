@@ -1,1 +1,7 @@
-/* pages/opentype/opentype.wxss */
+page {
+    padding-bottom: 40rpx;
+}
+
+button {
+    margin-top: 40rpx;
+}

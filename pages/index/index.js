@@ -1,9 +1,6 @@
 const app = getApp();
 const GhossModal = require("../../lib/ghoss-modal/GhossModal.js");
-// import { GhossModal } from "../../lib/ghoss-modal/gmodal.util.js";
 var _this;
-var title = "弹窗标题";
-var content = "弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内。";
 Page({
 
   data: {

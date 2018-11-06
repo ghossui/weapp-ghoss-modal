@@ -1,2 +1,6 @@
-<!--pages/opentype/opentype.wxml-->
-<text>pages/opentype/opentype.wxml</text>
+<ghoss:modal data="{{gmodal.showExample}}" bind:complete="onGhossModalEvent" />
+<!-- 按钮组 -->
+<view class="btns" bind:tap="onTaps">
+    <button id="contact" class="btn" data-type="打开客服会话">打开客服会话</button>
+    <button id="openSetting" class="btn" data-type="打开设置">打开设置</button>
+</view>

@@ -45,3 +45,4 @@
     - [ ] 支持`open-type="share"`，打开设置，基础库版本1.2.0
     - [ ] 支持`open-type="feedback"`，打开设置，基础库版本2.1.0
     - [ ] 支持`loading`属性
+- [ ] 支持`Promise`

@@ -1,66 +1,38 @@
-// pages/opentype/opentype.js
+const GhossModal = require("../../lib/ghoss-modal/GhossModal.js");
+// import { GhossModal } from "../../lib/ghoss-modal/gmodal.util.js";
+var _this;
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+  /** 页面的初始数据 */
   data: {
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  /** 生命周期函数--监听页面加载 */
+  onLoad(options) {
+    _this = this;
+    // 初始化gmodal
+    _this.gmodal = new GhossModal(_this);
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onTaps(event) {
+    const id = event.target.id;
+    const type = event.target.dataset.type;
+    switch (id) {
+      case "openSetting":
+      case "contact":
+        _this.gmodal.show("gmodal.showExample", {
+          title: `${type}`,
+          content: `即将${type}，你确定吗？`,
+          openType: id,
+        })
+        break;
 
+      default:
+        break;
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  /** 用户点击右上角分享  */
+  onShareAppMessage() { }
 })
