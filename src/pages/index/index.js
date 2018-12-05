@@ -1,5 +1,6 @@
 const app = getApp();
 const GhossModal = require("../../lib/ghoss-modal/GhossModal.js");
+// const GhossModal = require("../../dist/GhossModal.js");
 var _this;
 Page({
 

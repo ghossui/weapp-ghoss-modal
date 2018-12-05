@@ -28,7 +28,7 @@
     <input name="cancelColor" placeholder="cancelColor" value="black" />
     <text class="input-item-double-middle"></text>
     <!-- confirmText -->
-    <input name="confirmColor" placeholder="confirmColor" value="#1e90ba" />
+    <input name="confirmColor" placeholder="confirmColor" value="#6495ED" />
   </view>
   <!-- theme -->
   <view class="input-item">
@@ -47,32 +47,32 @@
   <!-- showHeader -->
   <view class="input-item input-switch">
     <view>显示头部</view>
-    <switch name="showHeader" checked="{{true}}" color="#1e90ba" />
+    <switch name="showHeader" checked="{{true}}" color="#6495ED" />
   </view>
   <!-- showFooter -->
   <view class="input-item input-switch">
     <view>显示底部</view>
-    <switch name="showFooter" checked="{{true}}" color="#1e90ba" />
+    <switch name="showFooter" checked="{{true}}" color="#6495ED" />
   </view>
   <!-- showCancel -->
   <view class="input-item input-switch">
     <view>显示取消按钮</view>
-    <switch name="showCancel" checked="{{true}}" color="#1e90ba" />
+    <switch name="showCancel" checked="{{true}}" color="#6495ED" />
   </view>
   <!-- autoClose -->
   <view class="input-item input-switch">
     <view>点击确定按钮关闭弹窗</view>
-    <switch name="autoClose" checked="{{true}}" color="#1e90ba" />
+    <switch name="autoClose" checked="{{true}}" color="#6495ED" />
   </view>
   <!-- maskClose -->
   <view class="input-item input-switch">
     <view>点击遮罩层关闭弹窗</view>
-    <switch name="maskClose" checked="{{false}}" color="#1e90ba" />
+    <switch name="maskClose" checked="{{false}}" color="#6495ED" />
   </view>
   <!-- formId -->
   <view class="input-item input-switch">
     <view>点击确定按钮获取formId</view>
-    <switch name="formId" checked="{{false}}" color="#1e90ba" />
+    <switch name="formId" checked="{{false}}" color="#6495ED" />
   </view>
   <button class="btn btn-submit" form-type="submit">立即弹出看下效果</button>
 </form>

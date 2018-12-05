@@ -6,7 +6,7 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#1e90ba",
+    "navigationBarBackgroundColor": "#6495ED",
     "navigationBarTitleText": "GhossModal弹窗组件演示",
     "navigationBarTextStyle": "white"
   },
@@ -14,7 +14,7 @@
     "position": "top",
     "color": "#ccc",
     "selectedColor": "white",
-    "backgroundColor": "#1e90ba",
+    "backgroundColor": "#6495ED",
     "list": [
       {
         "pagePath": "pages/index/index",

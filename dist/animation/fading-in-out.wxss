@@ -1,0 +1,1 @@
+.fading-in-out-show .gmodal-body {animation: animation-fading-body-show 400ms;}.fading-in-out-hide .gmodal-body {animation: animation-fading-body-hide 400ms;}@keyframes animation-fading-body-show {from {opacity: 0;}to {opacity: 1;}}@keyframes animation-fading-body-hide {from {opacity: 1;}to {opacity: 0;}}

@@ -96,5 +96,6 @@ page {
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 9;
   box-shadow: 0rpx -4rpx 20rpx 0rpx white;
 }

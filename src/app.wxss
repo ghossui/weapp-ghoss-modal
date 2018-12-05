@@ -5,11 +5,11 @@ page {
 .btn {
   color: white;
   border-radius: 0;
-  background-color: #1e90ba;
+  background-color: #6495ED;
 }
 
 .btn:active {
-  background-color: #037AA6;
+  background-color: #6495ED;
 }
 
 .btn:after {

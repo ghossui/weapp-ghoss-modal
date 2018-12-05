@@ -1,0 +1,30 @@
+<view class="gmodal-box {{toggleClass}} {{animationClass}} {{o.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
+  <!-- 遮罩层 -->
+  <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
+  <!-- 主体 -->
+  <view class="gmodal-body" style="background: {{o.background}};">
+    <form bindsubmit="{{o.formId?'bindConfirm':''}}" report-submit="{{o.formId}}">
+      <!-- 头部 -->
+      <view class="gmodal-body-header" wx:if="{{o.showHeader}}">
+        <text>{{o.title}}</text>
+      </view>
+      <!-- 内容区 -->
+      <view class="gmodal-body-content {{o.showHeader?'':'hide-header'}}">
+        <scroll-view class="scroll" scroll-y="1">
+          <!-- style="margin:20rpx 0;" -->
+          <view wx:if="{{o.content}}">{{o.content}}</view>
+          <slot wx:else></slot>
+        </scroll-view>
+      </view>
+      <!-- 底部按钮 -->
+      <view class="gmodal-body-btns" wx:if="{{o.showFooter}}">
+        <button class="btn btn-cancel" style="{{o.cancelStyle}}" bindtap="bindCancel" wx:if="{{o.showCancel}}">
+          {{o.cancelText}}
+        </button>
+        <button class="btn btn-confirm" style="{{o.confirmStyle}}" bindtap="{{o.formId?'':'bindConfirm'}}" form-type="submit" open-type="{{o.openType}}" app-parameter="{{o.appParameter}}" binderror="onErrorConfirmButton">
+          {{o.confirmText}}
+        </button>
+      </view>
+    </form>
+  </view>
+</view>
