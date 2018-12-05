@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "动态演示",
   "usingComponents": {
-    "ghoss:modal": "/lib/ghoss-modal/ghoss-modal"
+    "ghoss:modal": "/lib/gmodal/gmodal"
   }
 }

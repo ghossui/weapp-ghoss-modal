@@ -1,5 +1,5 @@
 const app = getApp();
-const GhossModal = require("../../lib/ghoss-modal/GhossModal.js");
+const GhossModal = require("../../lib/gmodal/GhossModal.js");
 // const GhossModal = require("../../dist/GhossModal.js");
 var _this;
 Page({
@@ -14,6 +14,9 @@ Page({
       range: ["none", "zoom-in-out", "fading-in-out", "fading-zoom-in-out"],
       index: 1,
       value: "fading-zoom-in-out",
+    },
+    values: {
+      content: "这里是提示内容，\\n这里是第二行。"
     }
   },
 
@@ -27,6 +30,8 @@ Page({
   onSubmitShowModal(event) {
     const value = event.detail.value;
     console.log("\nvalue:", value)
+
+    value.content = (value.content || "").replace(/\\n/g, "\n");
 
     _this.gmodal.show("gmodal.showExample", {
       title: value.title,
@@ -43,6 +48,8 @@ Page({
       autoClose: value.autoClose,
       maskClose: value.maskClose,
       formId: value.formId,
+      showInput: value.showInput,
+      allowEmpty: value.allowEmpty,
       /** 确定按钮回调 */
       confirm(res) {
         wx.showToast({
@@ -62,6 +69,13 @@ Page({
           _this.gmodal.alert(`成功获取到了formId： ${res.formId}`);
           // wx.showModal({ content:  })
         }
+        if (value.showInput) {
+          console.log("你输入了：", res.value)
+        }
+      },
+      /** 文本框输入事件 */
+      input(res) {
+        console.log("input:", res)
       },
       /** 取消按钮回调 */
       cancel(res) {

@@ -1,5 +1,4 @@
-// const GhossModal = require("../../lib/ghoss-modal/GhossModal.js");
-const GhossModal = require("../../dist/GhossModal.js");
+const GhossModal = require("../../lib/gmodal/GhossModal.js");
 var _this;
 Page({
 

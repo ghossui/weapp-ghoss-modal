@@ -3,7 +3,7 @@ App({
 
   },
   // GhossModal 全局配置
-  ghossModal: {
+  gmodal: {
     config: {
       // confirmText: "red",
       //  cancelText: "yellow",

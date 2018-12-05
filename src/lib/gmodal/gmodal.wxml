@@ -1,0 +1,73 @@
+<view class="gmodal-box {{toggleClass}} {{animationClass}} {{o.theme}}-theme " wx:if="{{hidden}}" catchtouchmove="noTouch">
+  <!-- 遮罩层 -->
+  <view class="gmodal-mask" data-mask="{{true}}" bindtap="bindCancel" />
+  <!-- 主体 -->
+  <view class="gmodal-body" style="background: {{o.background}};">
+    <form bindsubmit="{{o.formId?'bindConfirm':''}}" report-submit="{{o.formId}}">
+      <!-- 头部 -->
+      <view class="gmodal-body-header" wx:if="{{o.showHeader}}">
+        <view>{{o.title}}</view>
+      </view>
+      <!-- 内容区 -->
+      <view class="gmodal-body-content {{o.showHeader?'':'hide-header'}}">
+        <scroll-view class="scroll" scroll-y="1">
+          <!-- 是否显示input -->
+          <block wx:if="{{o.showInput}}">
+            <textarea id="input-box"
+                  class="textarea"
+                  placeholder="{{o.placeholder}}"
+                  value="{{o.value}}"
+                  password="{{o.password}}"
+                  focus="{{o.focus}}"
+                  maxlength="{{o.maxlength}}"
+                  auto-height="{{true}}"
+                  show-confirm-bar="{{false}}"
+                  placeholder-class="placeholder-class"
+                  style="{{o.inputStyle}}"
+                  bindinput="bindInput"
+                  bindconfirm="bindConfirm"
+                  wx:if="{{o.lineBreaks}}" />
+
+            <input id="input-box"
+                class="input"
+                placeholder="{{o.placeholder}}"
+                value="{{o.value}}"
+                password="{{o.password}}"
+                focus="{{o.focus}}"
+                maxlength="{{o.maxlength}}"
+                type="{{o.inputType}}"
+                adjust-position="{{true}}"
+                placeholder-class="placeholder-class"
+                style="{{o.inputStyle}}"
+                bindinput="bindInput"
+                bindconfirm="bindConfirm"
+                wx:else />
+                <!-- cursor-spacing="100" -->
+          </block>
+          <!-- 有content优先显示content -->
+          <text wx:elif="{{o.content}}">{{o.content}}</text>
+          <!-- 最后才显示slot -->
+          <slot wx:else></slot>
+        </scroll-view>
+      </view>
+      <!-- 底部按钮 -->
+      <view class="gmodal-body-btns" wx:if="{{o.showFooter}}">
+        <button class="btn btn-cancel"
+              style="{{o.cancelStyle}}"
+              bindtap="bindCancel"
+              wx:if="{{o.showCancel}}">
+          {{o.cancelText}}
+        </button>
+        <button class="btn btn-confirm"
+              style="{{o.confirmStyle}}"
+              bindtap="{{o.formId?'':'bindConfirm'}}"
+              form-type="submit"
+              open-type="{{o.openType}}"
+              app-parameter="{{o.appParameter}}"
+              binderror="onErrorConfirmButton">
+          {{o.confirmText}}
+        </button>
+      </view>
+    </form>
+  </view>
+</view>

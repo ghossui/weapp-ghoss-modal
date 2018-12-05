@@ -65,9 +65,10 @@ function getEventRouter(_this) {
         });
         if (eventType === 'confirm') execute(event.detail.confirmCaller);
         if (eventType === 'cancel') execute(event.detail.cancelCaller);
-        execute(event.detail.completeCaller);
+        if (eventType === 'input') execute(event.detail.inputCaller);
         // 执行完成后移除这些回调函数以不占用多余内存，前提是不自动关闭
-        if (event.detail.detail.autoClose === true) {
+        if (eventType === 'close') {
+            execute(event.detail.completeCaller);
             delete _this.page[event.detail.confirmCaller];
             delete _this.page[event.detail.cancelCaller];
             delete _this.page[event.detail.completeCaller];
@@ -101,7 +102,10 @@ function toggle(_this, name, options, show = false) {
                     _this.page[name] = options[lower], options[`${lower}Caller`] = name;
                 }
             });
-            tempStorage("Confirm"), tempStorage("Cancel"), tempStorage("Complete");
+            tempStorage("Confirm");
+            tempStorage("Cancel");
+            tempStorage("Input");
+            tempStorage("Complete");
         }
         // setData
         let data = options.setData;
@@ -125,7 +129,7 @@ function showModal(gmodal, title, content, success, showCancel) {
     } else {
         options = { content: title, showCancel, showHeader: false };
     }
-    const config = (getApp().ghossModal || {}).config || {};
+    const config = (getApp().gmodal || {}).config || {};
     options.autoClose = true;
     options.maskClose = false;
     options.theme = config.alertTheme;

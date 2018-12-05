@@ -1,5 +1,5 @@
-<ghoss:modal data="{{gmodal.showExample}}" bind:complete="onGhossModalEvent" />
-<ghoss:modal data="{{gmodal.showModal}}" bind:complete="onGhossModalEvent" />
+<ghoss:modal data="{{gmodal.showExample}}" bind:event-route="onGhossModalEvent" />
+<ghoss:modal data="{{gmodal.showModal}}" bind:event-route="onGhossModalEvent" />
 <view class="title">GhossModal 动态演示</view>
 <form bind:submit="onSubmitShowModal">
   <!-- title -->
@@ -10,7 +10,7 @@
   <!-- content -->
   <view class="input-item">
     <text class="input-tip">内容</text>
-    <input name="content" placeholder="content" value="这里是提示内容" />
+    <input name="content" placeholder="content" value="{{values.content}}" />
   </view>
   <!-- button text -->
   <view class="input-tip">按钮文本</view>
@@ -73,6 +73,16 @@
   <view class="input-item input-switch">
     <view>点击确定按钮获取formId</view>
     <switch name="formId" checked="{{false}}" color="#6495ED" />
+  </view>
+  <!-- showInput -->
+  <view class="input-item input-switch">
+    <view>显示input输入框</view>
+    <switch name="showInput" checked="{{false}}" color="#6495ED" />
+  </view>
+  <!-- allowEmpty -->
+  <view class="input-item input-switch">
+    <view>允许空值关闭</view>
+    <switch name="allowEmpty" checked="{{false}}" color="#6495ED" />
   </view>
   <button class="btn btn-submit" form-type="submit">立即弹出看下效果</button>
 </form>

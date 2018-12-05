@@ -46,3 +46,4 @@
     - [ ] 支持`open-type="feedback"`，打开设置，基础库版本2.1.0
     - [ ] 支持`loading`属性
 - [ ] 支持`Promise`
+- [ ] 可将content字段的`\n`解析成换行符

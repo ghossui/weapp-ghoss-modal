@@ -131,3 +131,26 @@
 .gmodal-body-btns .btn-cancel {
 	color: black;
 }
+
+/* 输入框样式 */
+
+.gmodal-body-content .input, .gmodal-body-content .textarea {
+	width: 100%;
+	background-color: white;
+	box-sizing: border-box;
+	font-size: 32rpx;
+	color: #333333;
+}
+
+.gmodal-body-content .input {
+	border-bottom: 1px solid #6495ED;
+}
+
+.gmodal-body-content .placeholder-class {
+	font-size: 32rpx;
+}
+
+.gmodal-body-content .textarea {
+	min-height: 128rpx;
+	max-height: 256rpx;
+}
