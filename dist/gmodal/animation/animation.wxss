@@ -1,0 +1,47 @@
+.fading-in-out-show .gmodal-body{animation:animation-fading-body-show .4s}
+.fading-in-out-hide .gmodal-body{animation:animation-fading-body-hide .4s}
+@keyframes animation-fading-body-show{
+from{opacity:0}
+to{opacity:1}
+}
+@keyframes animation-fading-body-hide{
+from{opacity:1}
+to{opacity:0}
+}
+
+.fading-zoom-in-out-show .gmodal-body{animation:animation-fading-zoom-body-show .4s}
+.fading-zoom-in-out-hide .gmodal-body{animation:animation-fading-zoom-body-hide .4s}
+@keyframes animation-fading-zoom-body-show{
+0%{opacity:0;transform:scale(.5,.5)}
+75%{opacity:.8;transform:scale(1.1,1.1)}
+100%{opacity:1;transform:scale(1,1)}
+}
+@keyframes animation-fading-zoom-body-hide{
+0%{opacity:1;transform:scale(1,1)}
+25%{opacity:.8;transform:scale(1.1,1.1)}
+100%{opacity:0;transform:scale(.5,.5)}
+}
+
+.gmodal-show .gmodal-mask{animation:animation-mask-show .3s forwards}
+.gmodal-hide .gmodal-mask{animation:animation-mask-hide .3s forwards}
+@keyframes animation-mask-show{
+from{background-color:rgba(0,0,0,0)}
+to{background-color:rgba(0,0,0,.5)}
+}
+@keyframes animation-mask-hide{
+from{background-color:rgba(0,0,0,.5)}
+to{background-color:rgba(0,0,0,0)}
+}
+
+.zoom-in-out-show .gmodal-body{animation:animation-zoom-body-show .4s}
+.zoom-in-out-hide .gmodal-body{animation:animation-zoom-body-hide .4s}
+@keyframes animation-zoom-body-show{
+0%{transform:scale(.1,.1)}
+75%{transform:scale(1.1,1.1)}
+100%{transform:scale(1,1)}
+}
+@keyframes animation-zoom-body-hide{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.1,1.1)}
+100%{transform:scale(.1,.1)}
+}

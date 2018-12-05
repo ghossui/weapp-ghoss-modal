@@ -1,156 +1,20 @@
-@import "themes/wx-android.wxss";
-@import "themes/wx-ios.wxss";
-@import "animation/mask-normal.wxss";
-@import "animation/zoom-in-out.wxss";
-@import "animation/fading-in-out.wxss";
-@import "animation/fading-zoom-in-out.wxss";
-.gmodal-box {
-	position: fixed;
-	z-index: 99997;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.gmodal-mask {
-	position: absolute;
-	z-index: 99998;
-	background-color: rgba(0, 0, 0, 0);
-}
-
-.gmodal-box, .gmodal-mask {
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-
-.gmodal-body {
-	position: relative;
-	z-index: 99999;
-	width: 80%;
-	max-height: 80%;
-	transition: all 0.5s;
-}
-
-/* 
-.gmodal-show .gmodal-body {
-	animation: animation-gmodal-show 400ms;
-}
-
-@keyframes animation-gmodal-show {
-	0% {
-		transform: scale(0.1, 0.1);
-	}
-	75% {
-		transform: scale(1.1, 1.1);
-	}
-	100% {
-		transform: scale(1, 1);
-	}
-}
-
-.gmodal-hide .gmodal-body {
-	animation: animation-gmodal-hide 400ms;
-}
-
-@keyframes animation-gmodal-hide {
-	0% {
-		transform: scale(1, 1);
-	}
-	25% {
-		transform: scale(1.1, 1.1);
-	}
-	100% {
-		transform: scale(0.1, 0.1);
-	}
-} */
-
-/* header */
-
-.gmodal-body-header {
-	font-size: 38rpx;
-	padding: 20rpx 20rpx;
-	border-bottom: 1px solid #f5f5f5;
-	/** 内容过多裁剪 */
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
-/* content */
-
-.gmodal-body-content {
-	padding: 20rpx 20rpx;
-	font-size: 32rpx;
-}
-
-.gmodal-body-content.hide-header {
-	padding: 50rpx 30rpx;
-	text-align: center;
-}
-
-.gmodal-body-content.hide-header .scroll {
-	color: black;
-}
-
-.gmodal-body-content .scroll {
-	color: #666;
-	max-height: 70vh;
-	position: relative;
-}
-
-/* buttons */
-
-.gmodal-body-btns {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	box-sizing: border-box;
-	justify-content: space-between;
-}
-
-/* 自定义组件内不能使用标签选择器（例如：button） */
-
-.gmodal-body-btns .btn {
-	flex: 1;
-	color: #09f;
-	border-radius: 0;
-	background-color: white;
-}
-
-.gmodal-body-btns .btn:active {
-	background-color: #ddd;
-}
-
-.gmodal-body-btns .btn:after {
-	border: 1px solid #ccc;
-	border-radius: 0;
-}
-
-.gmodal-body-btns .btn-cancel {
-	color: black;
-}
-
-/* 输入框样式 */
-
-.gmodal-body-content .input, .gmodal-body-content .textarea {
-	width: 100%;
-	background-color: white;
-	box-sizing: border-box;
-	font-size: 32rpx;
-	color: #333333;
-}
-
-.gmodal-body-content .input {
-	border-bottom: 1px solid #6495ED;
-}
-
-.gmodal-body-content .placeholder-class {
-	font-size: 32rpx;
-}
-
-.gmodal-body-content .textarea {
-	min-height: 128rpx;
-	max-height: 256rpx;
-}
+@import "themes/themes.wxss";
+@import "animation/animation.wxss";
+.gmodal-box{position:fixed;z-index:99997;display:flex;justify-content:center;align-items:center}
+.gmodal-mask{position:absolute;z-index:99998;background-color:rgba(0,0,0,0)}
+.gmodal-box,.gmodal-mask{top:0;left:0;width:100%;height:100%}
+.gmodal-body{position:relative;z-index:99999;width:80%;max-height:80%;transition:all .5s}
+.gmodal-body-header{font-size:38rpx;padding:20rpx 20rpx;border-bottom:1px solid #f5f5f5;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.gmodal-body-content{padding:20rpx 20rpx;font-size:32rpx}
+.gmodal-body-content.hide-header{padding:50rpx 30rpx;text-align:center}
+.gmodal-body-content.hide-header .scroll{color:#000}
+.gmodal-body-content .scroll{color:#666;max-height:70vh;position:relative}
+.gmodal-body-btns{height:100%;display:flex;align-items:center;box-sizing:border-box;justify-content:space-between}
+.gmodal-body-btns .btn{flex:1;color:#09f;border-radius:0;background-color:#fff}
+.gmodal-body-btns .btn:active{background-color:#ddd}
+.gmodal-body-btns .btn:after{border:1px solid #ccc;border-radius:0}
+.gmodal-body-btns .btn-cancel{color:#000}
+.gmodal-body-content .input,.gmodal-body-content .textarea{width:100%;background-color:#fff;box-sizing:border-box;font-size:32rpx;color:#333}
+.gmodal-body-content .input{border-bottom:1px solid #6495ed}
+.gmodal-body-content .placeholder-class{font-size:32rpx}
+.gmodal-body-content .textarea{min-height:128rpx;max-height:256rpx}
