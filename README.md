@@ -26,10 +26,10 @@
 - [x] 内置放大缩小动画（zoom-in-out）
 - [x] 内置淡入弹出动画（fading-in-out）
 - [x] 内置fading-zoom-in-out动画
+- [x] 可将content字段的`\n`解析成换行符
+- [x] 可弹出input输入框
 
 # 待完成
-
-- [ ] 可弹出input输入框
 - [ ] button属性支持
     - [ ] 支持`open-type="getUserInfo"`获取用户信息，基础库版本1.3.0
     - [ ] 支持`bindgetuserinfo`回调
@@ -46,4 +46,6 @@
     - [ ] 支持`open-type="feedback"`，打开设置，基础库版本2.1.0
     - [ ] 支持`loading`属性
 - [ ] 支持`Promise`
-- [ ] 可将content字段的`\n`解析成换行符
+- [ ] 封装 gmodal.prompt(); 
+- [ ] 修复wx-ios下的input文本会居中的问题
+- [ ] 修复应用了主题颜色导致取消按钮变色问题
