@@ -28,22 +28,25 @@
 - [x] 内置fading-zoom-in-out动画
 - [x] 可将content字段的`\n`解析成换行符
 - [x] 可弹出input输入框
-- [x] 封装gmodal.alert(); 
-- [x] 封装gmodal.prompt(); 
-- [x] 封装gmodal.confirm();
 - [x] 修复wx-ios下的input文本会居中的问题
 - [x] 修复应用了主题颜色导致取消按钮变色问题
-- [?] 解决当内容长度过多时，无法滚动的问题
+- [x] 解决当内容长度过多时，无法滚动的问题
 - [x] 解决当内容长度过多时，按钮位置会错位的问题
 - [x] 增加当不允许输入空值的时候闪烁placeholder
+- [x] 封装方法
+  - [x] alert(); 
+  - [x] prompt(); 
+  - [x] confirm();
  [x] 支持`Promise`
   - [x] alert()
   - [x] prompt()
   - [x] confirm()
   - [x] show()
   - [x] hide()
+- [x] 修复组件内部关闭后，在小程序开发工具的AppData中修改了任意数据会导致重新弹出的问题
 
 # 待完成
+
 - [ ] button属性支持
     - [ ] 支持`open-type="getUserInfo"`获取用户信息，基础库版本1.3.0
     - [ ] 支持`bindgetuserinfo`回调
@@ -59,5 +62,3 @@
     - [ ] 支持`open-type="share"`，打开设置，基础库版本1.2.0
     - [ ] 支持`open-type="feedback"`，打开设置，基础库版本2.1.0
     - [ ] 支持`loading`属性
-
-- [ ] 修复组件内部关闭后，在小程序开发工具的AppData中修改了任意数据会导致重新弹出的问题

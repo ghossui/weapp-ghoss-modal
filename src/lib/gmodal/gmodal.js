@@ -3,7 +3,7 @@ import { CallType } from "./GhossModal.js";
  * 模态弹窗组件
  * 
  * @author sjlei
- * @version v0.8.1
+ * @version v0.8.2
  * 
  */
 Component({
@@ -74,7 +74,7 @@ Component({
             this.show();
           });
         } else {
-          this.hide();
+          this.hide(true);
         }
       }
     }
@@ -109,19 +109,24 @@ Component({
       });
       this.isTrigger = false;
     },
-    hide(success) {
-      this.setData({
-        animationClass: this.data.o.animation + "-hide",
-        toggleClass: "gmodal-hide",
-        "o.show": false
-      });
-      setTimeout(() => {
-        this.setData({ hidden: false })
-        if (typeof success === "function") success();
-        this.data.inputs["input-box"] = "";
-        this.myTriggerEvent("close", {});
-      }, this.data.o.animation === "none" ? 0 : 350);
+    hide(fromData, success) {
+      if (fromData) {
+        if (!this.data.o.show) return;
 
+        this.setData({
+          animationClass: this.data.o.animation + "-hide",
+          toggleClass: "gmodal-hide",
+          "o.show": false
+        });
+        setTimeout(() => {
+          this.setData({ hidden: false })
+          if (typeof success === "function") success();
+          this.data.inputs["input-box"] = "";
+          this.myTriggerEvent("close", {});
+        }, this.data.o.animation === "none" ? 0 : 350);
+      } else {
+        this.myTriggerEvent("hide", {});
+      }
     },
 
     isTrigger: false,
@@ -141,7 +146,7 @@ Component({
         detail.value = value;
       }
       if (event.type === "submit") detail.formId = event.detail.formId;// 如果是submit事件，则获取formId 
-      if (this.data.o.autoClose) this.hide();
+      if (this.data.o.autoClose) this.hide(false);
       if (this.data.o.openSetting) {// openSetting
         wx.openSetting({
           complete: (res) => {
@@ -157,7 +162,7 @@ Component({
       if (this.isTrigger) return;
       let maskClose = this.data.o.maskClose;
       if (event.currentTarget.dataset.mask && !maskClose) return;
-      this.hide(), this.triggerCancel();
+      this.hide(false), this.triggerCancel();
     },
 
     /** 绑定文本框的input事件 */
@@ -178,6 +183,7 @@ Component({
       this.triggerEvent('event-route', {
         detail: eventType === 'close' ? this.data.detail : detail, // 触发close事件时使用储存的最后一次detail，而不是新的detail，因为新的detail是空的
         eventType,
+        uk: this.data.o.uk,
         confirmCaller: this.data.o.confirmCaller,
         inputCaller: this.data.o.inputCaller,
         cancelCaller: this.data.o.cancelCaller,

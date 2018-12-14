@@ -84,7 +84,7 @@ class GhossModal {
 /** 获取事件路由器 */
 function getEventRouter(_this) {
     return ((event) => {
-        let eventType = event.detail.eventType;
+        let { eventType, uk } = event.detail;
         let execute = ((caller) => {
             if (caller) { // 有值则代表传入了回调，否则视为未传
                 let callback = _this.page[caller];
@@ -95,22 +95,27 @@ function getEventRouter(_this) {
                 }
             }
         });
-        if (eventType === 'confirm') execute(event.detail.confirmCaller);
-        if (eventType === 'cancel') execute(event.detail.cancelCaller);
-        if (eventType === 'input') execute(event.detail.inputCaller);
+        let { confirmCaller, cancelCaller, inputCaller, completeCaller } = event.detail;
+        if (eventType === 'hide') _this.page.setData({ [`${uk}.show`]: false });
+        else if (eventType === 'confirm') execute(confirmCaller);
+        else if (eventType === 'cancel') execute(cancelCaller);
+        else if (eventType === 'input') execute(inputCaller);
         // 执行完成后移除这些回调函数以不占用多余内存，前提是不自动关闭
-        if (eventType === 'close') {
+        else if (eventType === 'close') {
             event.detail.detail.callType = CallType.complete;
-            execute(event.detail.completeCaller);
-            delete _this.page[event.detail.confirmCaller];
-            delete _this.page[event.detail.cancelCaller];
-            delete _this.page[event.detail.completeCaller];
+            execute(completeCaller);
+            delete _this.page[confirmCaller];
+            delete _this.page[cancelCaller];
+            delete _this.page[inputCaller];
+            delete _this.page[completeCaller];
         }
     });
 }
 
 /**
  * 切换显示GhossModal
+ * 
+ * @param {GhossModal} _this GhossModal的实例
  * @param {String} name GhossModal的名称
  * @param {Object} options GhossModal的选项
  * @param {Boolean} show 是否显示，true显示，false隐藏
@@ -124,6 +129,7 @@ function toggle(_this, name, options, show = false) {
                 throwRunntimeError(`"page" 参数异常，请检查是否已实例化成功，并且不要更改此参数`);
             } else {
                 if (!(options instanceof Object)) options = {};
+                options.uk = name;
                 options.show = show;
                 // 隐藏的时候只保留setData一个参数
                 if (options.show === false) {
@@ -131,20 +137,20 @@ function toggle(_this, name, options, show = false) {
                 } else {
                     // 暂存回调函数到Page
                     let saveCallback = ((type) => {
-                        let name = `onGhossModal${type}Event${new Date().getTime()}`;
+                        let eventName = `onGhossModal${type}Event${new Date().getTime()}`;
                         let lower = type.toLowerCase();
                         let isFunction = typeof options[lower] === 'function';
 
                         if (lower === 'confirm' || lower === 'cancel') {
-                            _this.page[name] = (detail) => {
+                            _this.page[eventName] = (detail) => {
                                 detail.callType = CallType[lower];
                                 if (isFunction) options[lower](detail);
                                 resolve(detail);
                             };
                         } else if (isFunction) {
-                            _this.page[name] = options[lower];
+                            _this.page[eventName] = options[lower];
                         }
-                        if (isFunction) options[`${lower}Caller`] = name;
+                        if (isFunction) options[`${lower}Caller`] = eventName;
                     });
                     saveCallback("Confirm");
                     saveCallback("Cancel");
