@@ -2,7 +2,7 @@
  * GhossModal Util js 
  * 
  * @author sjlei
- * @version v0.1.2
+ * @version v0.8.0
  * 
  */
 class GhossModal {

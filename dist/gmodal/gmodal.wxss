@@ -8,13 +8,16 @@
 .gmodal-body-content{padding:20rpx 20rpx;font-size:32rpx}
 .gmodal-body-content.hide-header{padding:50rpx 30rpx;text-align:center}
 .gmodal-body-content.hide-header .scroll{color:#000}
-.gmodal-body-content .scroll{color:#666;max-height:70vh;position:relative}
+.gmodal-body-content .scroll{color:#666;max-height:65vh;position:relative}
 .gmodal-body-btns{height:100%;display:flex;align-items:center;box-sizing:border-box;justify-content:space-between}
-.gmodal-body-btns .btn{flex:1;color:#09f;border-radius:0;background-color:#fff}
+.gmodal-body-btns .btn{flex:1;color:#09f;border-radius:0;background-color:#fff;border-top:1px solid #ccc;border-right:1px solid #ccc}
+.gmodal-body-btns .btn:last-child{border-right:0}
 .gmodal-body-btns .btn:active{background-color:#ddd}
-.gmodal-body-btns .btn:after{border:1px solid #ccc;border-radius:0}
+.gmodal-body-btns .btn:after{border:0;border-radius:0}
 .gmodal-body-btns .btn-cancel{color:#000}
-.gmodal-body-content .input,.gmodal-body-content .textarea{width:100%;background-color:#fff;box-sizing:border-box;font-size:32rpx;color:#333}
-.gmodal-body-content .input{border-bottom:1px solid #6495ed}
-.gmodal-body-content .placeholder-class{font-size:32rpx}
+.gmodal-body-content .input,.gmodal-body-content .textarea{width:100%;background-color:#fff;box-sizing:border-box;font-size:32rpx;color:#333;transition:border .2s,background .2s}
+.gmodal-body-content .input,.gmodal-body-content .textarea{border-bottom:1px solid #6495ed}
+.gmodal-body-content .placeholder-class{font-size:32rpx;transition:color .2s}
 .gmodal-body-content .textarea{min-height:128rpx;max-height:256rpx}
+.gmodal-body-content .warning-empty-value .input,.gmodal-body-content .warning-empty-value .textarea{border-bottom-color:red!important}
+.gmodal-body-content .warning-empty-value .placeholder-class{color:red!important}
