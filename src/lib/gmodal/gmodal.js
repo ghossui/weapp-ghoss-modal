@@ -1,5 +1,11 @@
 import { CallType } from "./GhossModal.js";
-// 模态弹窗组件
+/**
+ * 模态弹窗组件
+ * 
+ * @author sjlei
+ * @version v0.8.1
+ * 
+ */
 Component({
   /** 组件的属性列表 */
   properties: {
@@ -168,7 +174,7 @@ Component({
     myTriggerEvent(eventType, detail) {
       detail = (detail instanceof Object) ? detail : {};
       detail.autoClose = this.data.o.autoClose;
-
+      detail.callType = CallType[eventType];
       this.triggerEvent('event-route', {
         detail: eventType === 'close' ? this.data.detail : detail, // 触发close事件时使用储存的最后一次detail，而不是新的detail，因为新的detail是空的
         eventType,
