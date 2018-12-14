@@ -10,7 +10,7 @@
       </view>
       <!-- 内容区 -->
       <view class="gmodal-body-content {{o.showHeader?'':'hide-header'}}">
-        <scroll-view class="scroll" scroll-y="1">
+        <scroll-view class="scroll {{warning.emptyValue?'warning-empty-value':''}}" scroll-y="{{true}}">
           <!-- 是否显示input -->
           <block wx:if="{{o.showInput}}">
             <textarea id="input-box"

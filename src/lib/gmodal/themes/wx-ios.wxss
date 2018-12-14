@@ -11,6 +11,14 @@
     text-align: center;
 }
 
+.wx-ios-theme .gmodal-body-content .scroll {
+    max-height: 60vh;
+}
+
+.wx-ios-theme .gmodal-body-content input {
+    text-align: left;
+}
+
 .wx-ios-theme .gmodal-body-content.hide-header {
     padding: 50rpx;
     padding-bottom: 10rpx;

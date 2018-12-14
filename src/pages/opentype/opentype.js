@@ -1,4 +1,4 @@
-const GhossModal = require("../../lib/gmodal/GhossModal.js");
+import { GhossModal } from "../../lib/gmodal/GhossModal.js";
 var _this;
 Page({
 

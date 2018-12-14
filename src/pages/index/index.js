@@ -1,6 +1,5 @@
+import { GhossModal, CallType } from "../../lib/gmodal/GhossModal.js";
 const app = getApp();
-const GhossModal = require("../../lib/gmodal/GhossModal.js");
-// const GhossModal = require("../../dist/GhossModal.js");
 var _this;
 Page({
 
@@ -29,7 +28,7 @@ Page({
   /** 立即弹出示例事件 */
   onSubmitShowModal(event) {
     const value = event.detail.value;
-    console.log("\nvalue:", value)
+    // console.log("\nvalue:", value)
 
     value.content = (value.content || "").replace(/\\n/g, "\n");
 
@@ -51,12 +50,31 @@ Page({
       showInput: value.showInput,
       allowEmpty: value.allowEmpty,
       /** 确定按钮回调 */
-      confirm(res) {
+      confirm() {
         wx.showToast({
           title: "confirm",
           icon: "none"
         });
-        if (res.autoClose === false) {
+      },
+      /** 取消按钮回调 */
+      cancel() {
+        wx.showToast({
+          title: "cancel",
+          icon: "none"
+        })
+      },
+      /** 文本框输入事件 */
+      input(res) {
+        console.log("input:", res)
+      },
+      /** 完成事件回调，无论点击了确定还是取消都会触发 */
+      complete(res) {
+        console.log("complete res：", res)
+      }
+    }).then((detail) => {
+
+      if (detail.callType === CallType.confirm) { // confirm
+        if (detail.autoClose === false) {
           wx.showModal({
             content: "检测到你关闭了'点击确定按钮关闭弹窗'选项，现在可以手动关闭，点击确定关闭",
             success(res) {
@@ -65,31 +83,19 @@ Page({
             }
           })
         }
-        if (res.formId) {
-          _this.gmodal.alert(`成功获取到了formId： ${res.formId}`);
-          // wx.showModal({ content:  })
+        if (detail.formId) {
+          _this.gmodal.alert(`成功获取到了formId： ${detail.formId}`);
         }
         if (value.showInput) {
-          console.log("你输入了：", res.value)
+          console.log("你输入了：", detail.value)
         }
-      },
-      /** 文本框输入事件 */
-      input(res) {
-        console.log("input:", res)
-      },
-      /** 取消按钮回调 */
-      cancel(res) {
-        wx.showToast({
-          title: "cancel",
-          icon: "none"
-        })
-      },
-      /** 完成事件回调，无论点击了确定还是取消都会触发 */
-      complete(res) {
-        console.log("complete res：", res)
+      } else {
+        console.log("detail:", detail)
       }
+      
+    }, (reason) => {
+      console.error("index-show:", reason)
     });
-
 
   },
 

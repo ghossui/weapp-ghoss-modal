@@ -2,7 +2,7 @@
  * GhossModal Util js 
  * 
  * @author sjlei
- * @version v0.1.1
+ * @version v0.1.2
  * 
  */
 class GhossModal {
@@ -19,13 +19,46 @@ class GhossModal {
     }
 
     /**
+     * 封装 confirm
+     * @param {string} title 
+     * @param {string} content 
+     * @param {object} options 
+     */
+    confirm(title, content, options) {
+        return showModal(this, title, content, options).then(detail => {
+            detail.confirm = detail.callType === CallType.confirm;
+            detail.cancel = detail.callType === CallType.cancel;
+            return Promise.resolve(detail);
+        }, reason => {
+            return Promise.reject(reason);
+        });
+    }
+
+    /**
+     * 封装prompt，用于弹出文本输入框
+     * @param {String} title 
+     * @param {Object} options 
+     */
+    prompt(title, options = {}) {
+        options["showInput"] = true;
+        return showModal(this, title, null, options);
+    }
+
+    /**
      * 封装alert
      * @param {string} title alert的标题（内容）
      * @param {string} content alert的内容（回调）
      * @param {function} success 成功后的回调函数（留空）
+     * 
+     * @return 返回 Promise 对象
      */
-    alert(title, content, success) {
-        showModal(this, title, content, success, false);
+    alert(title, content = {}, options) {
+        if (typeof content === 'object') {
+            options = content;
+            content = null;
+        }
+        options["showCancel"] = false;
+        return showModal(this, title, content, options);
     }
 
     /**
@@ -35,7 +68,7 @@ class GhossModal {
      * @param {Object} options 模态弹窗的选项
      */
     show(name, options) {
-        toggle(this, name, options, true);
+        return toggle(this, name, options, true);
     }
 
     /**
@@ -44,7 +77,7 @@ class GhossModal {
      * @param {String} name 模态弹窗的类名
      */
     hide(name) {
-        toggle(this, name, null, false);
+        return toggle(this, name, null, false);
     }
 
 }
@@ -68,6 +101,7 @@ function getEventRouter(_this) {
         if (eventType === 'input') execute(event.detail.inputCaller);
         // 执行完成后移除这些回调函数以不占用多余内存，前提是不自动关闭
         if (eventType === 'close') {
+            event.detail.detail.callType = CallType.complete;
             execute(event.detail.completeCaller);
             delete _this.page[event.detail.confirmCaller];
             delete _this.page[event.detail.cancelCaller];
@@ -78,65 +112,128 @@ function getEventRouter(_this) {
 
 /**
  * 切换显示GhossModal
- * @param {*} name GhossModal的名称
- * @param {*} options GhossModal的选项
- * @param {*} show 是否显示，true显示，false隐藏
+ * @param {String} name GhossModal的名称
+ * @param {Object} options GhossModal的选项
+ * @param {Boolean} show 是否显示，true显示，false隐藏
  */
 function toggle(_this, name, options, show = false) {
-    if (!name) {
-        throwRunntimeError(`"name" 不能为空`);
-    } else if (!isPage(_this.page)) {
-        throwRunntimeError(`"page" 参数异常，请检查是否已实例化成功，并且不要更改此参数`);
-    } else {
-        if (!(options instanceof Object)) options = {};
-        options.show = show;
-        // 隐藏的时候只保留setData一个参数
-        if (options.show === false) {
-            options = { setData: options.setData }
-        } else {
-            // 暂存回调函数到Page
-            let tempStorage = ((type) => {
-                let name = `onGhossModal${type}Event${new Date().getTime()}`;
-                let lower = type.toLowerCase();
-                if (typeof options[lower] === 'function') {
-                    _this.page[name] = options[lower], options[`${lower}Caller`] = name;
+    return new Promise((resolve, reject) => {
+        try {
+            if (!name) {
+                throwRunntimeError(`"name" 不能为空`);
+            } else if (!isPage(_this.page)) {
+                throwRunntimeError(`"page" 参数异常，请检查是否已实例化成功，并且不要更改此参数`);
+            } else {
+                if (!(options instanceof Object)) options = {};
+                options.show = show;
+                // 隐藏的时候只保留setData一个参数
+                if (options.show === false) {
+                    options = { setData: options.setData }
+                } else {
+                    // 暂存回调函数到Page
+                    let saveCallback = ((type) => {
+                        let name = `onGhossModal${type}Event${new Date().getTime()}`;
+                        let lower = type.toLowerCase();
+                        let isFunction = typeof options[lower] === 'function';
+
+                        if (lower === 'confirm' || lower === 'cancel') {
+                            _this.page[name] = (detail) => {
+                                detail.callType = CallType[lower];
+                                if (isFunction) options[lower](detail);
+                                resolve(detail);
+                            };
+                        } else if (isFunction) {
+                            _this.page[name] = options[lower];
+                        }
+                        if (isFunction) options[`${lower}Caller`] = name;
+                    });
+                    saveCallback("Confirm");
+                    saveCallback("Cancel");
+                    saveCallback("Input");
+                    saveCallback("Complete");
                 }
-            });
-            tempStorage("Confirm");
-            tempStorage("Cancel");
-            tempStorage("Input");
-            tempStorage("Complete");
+                // setData
+                let data = options.setData;
+                delete options.setData;
+                if (!(data instanceof Object)) data = {};
+                data[name] = options;
+                _this.page.setData(data, options["setDataComplete"])
+            }
+        } catch (error) {
+            reject(error);
         }
-        // setData
-        let data = options.setData;
-        delete options.setData;
-        if (!(data instanceof Object)) data = {};
-        data[name] = options;
-        _this.page.setData(data, options["setDataComplete"])
-    }
+    });
 }
 
+/**
+ * 封装showModal
+ * 
+ * @param {GhossModal} gmodal GhossModal对象，必填
+ * @param {String} title 显示的标题，必填
+ * @param {String} content 显示的内容，可空
+ * @param {Object} options 其他参数，可空
+ * 
+ * @return return Promise
+ */
+function showModal(gmodal, title, content = {}, options) {
+    return new Promise((resolve, reject) => {
+        try {
+            if (typeof content === 'object') {
+                if (typeof options === 'object') content = options;
+                options = content;
+            } else if (typeof options !== 'object') {
+                options = {};
+            }
+            if (typeof content === 'undefined' || typeof content === 'object') {
+                // showModal(gmodal, '内容'); 适用于弹出提示，无标题
+                if (options.showInput === true) {
+                    options["title"] = title;
+                } else {
+                    options["content"] = title;
+                    options["showHeader"] = false;
+                }
+            } else {
+                // showModal(gmodal, '标题', '内容'); 适用于弹出提示，有标题
+                options["title"] = title;
+                options["content"] = content;
+            }
+            // 默认选项
+            options["autoClose"] = true;
+            options["maskClose"] = false;
+            // 获取弹出框配置选项
+            const popup = (((getApp().gmodal || {}).config || {}).popup || {});
+            options["theme"] = options.theme || popup.theme;
+            options["animation"] = options.animation || popup.animation;
+            // 定义回调函数
+            options["confirm"] = (detail) => {
+                detail.callType = CallType.confirm;
+                resolve(detail);
+            };
+            options["cancel"] = (detail) => {
+                detail.callType = CallType.cancel;
+                resolve(detail);
+            };
 
-/** 封装showModal */
-function showModal(gmodal, title, content, success, showCancel) {
-    let options = {};
-    if (typeof content != 'undefined') {
-        if (typeof content == 'function') {
-            options = { content: title, showCancel, confirm: content, showHeader: false };
-        } else {
-            options = { title, content, showCancel, confirm: success };
+            gmodal.show("gmodal.showModal", options);
+        } catch (error) {
+            reject(error)
         }
-    } else {
-        options = { content: title, showCancel, showHeader: false };
-    }
-    const config = (getApp().gmodal || {}).config || {};
-    options.autoClose = true;
-    options.maskClose = false;
-    options.theme = config.alertTheme;
-    options.animation = config.alertAnimation;
-    gmodal.show("gmodal.showModal", options);
+    });
 }
 
+/** CallType */
+const CallType = {
+    close: -1,
+    complete: 0,
+    confirm: 1,
+    cancel: 2,
+    input: 3,
+}
+
+/** 判断传入的参数是否是页面 */
+function isPage(page) {
+    return (page && typeof page == 'object' && typeof page.setData === 'function');
+}
 
 /** 抛出构建错误 */
 function throwInstantiatingError(msg) {
@@ -158,9 +255,7 @@ function throwError(msg) {
     console.groupEnd();
 }
 
-/** 判断传入的参数是否是页面 */
-function isPage(page) {
-    return page && typeof page == 'object' && typeof page.setData == 'function';
-}
 
-module.exports = GhossModal;
+module.exports = {
+    GhossModal, CallType
+};

@@ -1,3 +1,4 @@
+import { CallType } from "./GhossModal.js";
 // 模态弹窗组件
 Component({
   /** 组件的属性列表 */
@@ -48,17 +49,19 @@ Component({
           if (typeof options.showCancel !== "boolean") options.showCancel = true;// 是否显示取消按钮
           if (typeof options.show !== "boolean") options.show = false;// 是否显示，本条选项可以忽略，由custModal里的show和hide方法控制
           /* 逻辑值 */
-          if (options.openType === "openSetting") {// 为了兼容openSetting()API接口修改
+          if (options.openType !== null) {
             if (options.formId) {
               options.formId = false;
-              console.error("showCustModalException：当openType为openSetting时不能设置formId为true，已自动设置为false")
+              console.warn("GhossModalException：当openType有值时不能设置formId为true，已自动设置为false")
             }
+          }
+          if (options.openType === "openSetting") {// 为了兼容openSetting()API接口修改
             options.openType = null;
             options.openSetting = true;
           }
           /* style */
           options.confirmStyle = `color: ${options.confirmColor ? options.confirmColor : options.themeColor};`;
-          options.cancelStyle = `color: ${options.cancelColor ? options.cancelColor : options.themeColor};`;
+          options.cancelStyle = `color: ${options.cancelColor ? options.cancelColor : "#333333"};`;
           options.inputStyle = `border-bottom-color:${options.themeColor};`;
           /* setData */
           this.setData({ o: options }, () => {
@@ -67,7 +70,6 @@ Component({
         } else {
           this.hide();
         }
-        // console.log("options:", options)
       }
     }
   },
@@ -83,7 +85,12 @@ Component({
     /** 控制播放动画的class */
     animationClass: "",//none-hide
     /** 控制实际显示与隐藏 */
-    hidden: false
+    hidden: false,
+
+    /** 用于控制显示隐藏警告信息 */
+    warning: {
+      emptyValue: false, // 当allowEmpty值为false时生效
+    }
   },
 
   /** 组件的方法列表 */
@@ -118,8 +125,13 @@ Component({
       let detail = {};
       if (this.data.o.showInput) {
         let value = (this.data.inputs["input-box"] || "").trim();
-        if (!value && !this.data.o.allowEmpty)
+        if (!value && !this.data.o.allowEmpty) {
+          this.setData({ "warning.emptyValue": true });
+          setTimeout(() => {
+            this.setData({ "warning.emptyValue": false });
+          }, 300)
           return; // 不允许空值触发confirm事件
+        }
         detail.value = value;
       }
       if (event.type === "submit") detail.formId = event.detail.formId;// 如果是submit事件，则获取formId 
@@ -158,14 +170,14 @@ Component({
       detail.autoClose = this.data.o.autoClose;
 
       this.triggerEvent('event-route', {
-        detail: eventType === 'close' ? this.data.detail : detail,
+        detail: eventType === 'close' ? this.data.detail : detail, // 触发close事件时使用储存的最后一次detail，而不是新的detail，因为新的detail是空的
         eventType,
         confirmCaller: this.data.o.confirmCaller,
         inputCaller: this.data.o.inputCaller,
         cancelCaller: this.data.o.cancelCaller,
         completeCaller: this.data.o.completeCaller,
       });
-      this.data.detail = this.cloneObject(detail);    // 记录最后一次触发事件的detail
+      this.data.detail = this.cloneObject(detail);    // 储存最后一次触发事件的detail
       if (this.data.o.autoClose === true && eventType !== 'input')
         this.isTrigger = true;
 

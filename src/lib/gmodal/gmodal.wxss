@@ -96,7 +96,7 @@
 
 .gmodal-body-content .scroll {
 	color: #666;
-	max-height: 70vh;
+	max-height: 65vh;
 	position: relative;
 }
 
@@ -117,6 +117,12 @@
 	color: #09f;
 	border-radius: 0;
 	background-color: white;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.gmodal-body-btns .btn:last-child {
+	border-right: 0;
 }
 
 .gmodal-body-btns .btn:active {
@@ -124,7 +130,7 @@
 }
 
 .gmodal-body-btns .btn:after {
-	border: 1px solid #ccc;
+	border: 0;
 	border-radius: 0;
 }
 
@@ -140,17 +146,31 @@
 	box-sizing: border-box;
 	font-size: 32rpx;
 	color: #333333;
+	transition: border 0.2s, background 0.2s;
 }
 
-.gmodal-body-content .input {
+.gmodal-body-content .input, .gmodal-body-content .textarea {
 	border-bottom: 1px solid #6495ED;
 }
 
 .gmodal-body-content .placeholder-class {
 	font-size: 32rpx;
+	transition: color 0.2s;
 }
 
 .gmodal-body-content .textarea {
 	min-height: 128rpx;
 	max-height: 256rpx;
+}
+
+.gmodal-body-content .warning-empty-value .input, .gmodal-body-content .warning-empty-value .textarea {
+	border-bottom-color: red !important;
+}
+
+/* .gmodal-body-content .warning-empty-value .textarea {
+	background-color: rgba(255, 0, 0, 0.3) !important;
+} */
+
+.gmodal-body-content .warning-empty-value .placeholder-class {
+	color: red !important;
 }

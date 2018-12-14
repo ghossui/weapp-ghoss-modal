@@ -8,8 +8,10 @@ App({
       // confirmText: "red",
       //  cancelText: "yellow",
       // theme: "wx-android",
-      alertTheme: "wx-ios",
-      alertAnimation: "fading-zoom-in-out",
+      popup: { // 给
+        theme: "wx-ios",
+        animation: "fading-zoom-in-out",
+      },
     },
   }
 })

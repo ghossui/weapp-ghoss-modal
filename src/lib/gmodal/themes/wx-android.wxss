@@ -19,6 +19,11 @@
     text-align: left;
 }
 
+/** scroll-view的样式，一般设置max-height用来兼容自定义主题，单位必须是vh */
+.wx-android-theme .gmodal-body-content .scroll {
+	max-height: 55vh;
+}
+
 /* 按钮父级view样式 */
 .wx-android-theme .gmodal-body-btns {
     justify-content: flex-end;
@@ -37,7 +42,7 @@
 }
 
 /* 按钮after，边框样式 */
-.wx-android-theme .gmodal-body-btns .btn:after {
+.wx-android-theme .gmodal-body-btns .btn {
     border: none;
 }
 
@@ -56,3 +61,4 @@
 .wx-android-theme .gmodal-body-btns .btn-cancel {
     margin-right: 10rpx;
 }
+
