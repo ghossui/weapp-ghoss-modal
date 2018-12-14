@@ -147,10 +147,11 @@ function toggle(_this, name, options, show = false) {
                                 if (isFunction) options[lower](detail);
                                 resolve(detail);
                             };
+                            options[`${lower}Caller`] = eventName;
                         } else if (isFunction) {
                             _this.page[eventName] = options[lower];
+                            if (isFunction) options[`${lower}Caller`] = eventName;
                         }
-                        if (isFunction) options[`${lower}Caller`] = eventName;
                     });
                     saveCallback("Confirm");
                     saveCallback("Cancel");
